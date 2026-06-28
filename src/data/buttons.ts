@@ -1,33 +1,22 @@
-@import "tailwindcss";
+export type ButtonDef = {
+  id: string;
+  name: string;
+  category: string;
+  label: string;
+  className: string;
+  html: string;
+  css: string;
+};
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* ---------- Showcase buttons ---------- */
-
-.btn-gradient {
+export const buttons: ButtonDef[] = [
+  {
+    id: "gradient",
+    name: "Gradient",
+    category: "Fill",
+    label: "Get Started",
+    className: "btn-gradient",
+    html: `<button class="btn-gradient">Get Started</button>`,
+    css: `.btn-gradient {
   color: #fff;
   font-weight: 600;
   padding: 13px 28px;
@@ -42,9 +31,16 @@ body {
 .btn-gradient:hover {
   filter: brightness(1.08);
   box-shadow: 0 10px 24px -6px rgba(99, 102, 241, 0.7);
-}
-
-.btn-neumorphic {
+}`,
+  },
+  {
+    id: "neumorphic",
+    name: "Neumorphism",
+    category: "Soft UI",
+    label: "Continue",
+    className: "btn-neumorphic",
+    html: `<button class="btn-neumorphic">Continue</button>`,
+    css: `.btn-neumorphic {
   color: #d4d4d8;
   font-weight: 600;
   padding: 13px 28px;
@@ -62,9 +58,16 @@ body {
 
 .btn-neumorphic:active {
   box-shadow: inset 4px 4px 10px #0a0a0c, inset -4px -4px 10px #28292f;
-}
-
-.btn-glass {
+}`,
+  },
+  {
+    id: "glass",
+    name: "Glassmorphism",
+    category: "Translucent",
+    label: "Sign In",
+    className: "btn-glass",
+    html: `<button class="btn-glass">Sign In</button>`,
+    css: `.btn-glass {
   color: #fff;
   font-weight: 600;
   padding: 13px 28px;
@@ -78,9 +81,16 @@ body {
 
 .btn-glass:hover {
   background: rgba(255, 255, 255, 0.14);
-}
-
-.btn-outline {
+}`,
+  },
+  {
+    id: "outline",
+    name: "Outline",
+    category: "Minimal",
+    label: "Learn More",
+    className: "btn-outline",
+    html: `<button class="btn-outline">Learn More</button>`,
+    css: `.btn-outline {
   color: #f5f5f7;
   font-weight: 600;
   padding: 13px 28px;
@@ -95,9 +105,16 @@ body {
   border-color: #f5f5f7;
   background: #f5f5f7;
   color: #0e0f12;
-}
-
-.btn-neon {
+}`,
+  },
+  {
+    id: "neon",
+    name: "Neon",
+    category: "Glow",
+    label: "Play Now",
+    className: "btn-neon",
+    html: `<button class="btn-neon">Play Now</button>`,
+    css: `.btn-neon {
   color: #00e0b0;
   font-weight: 600;
   padding: 13px 28px;
@@ -113,9 +130,16 @@ body {
   color: #0e0f12;
   background: #00e0b0;
   box-shadow: 0 0 18px rgba(0, 224, 176, 0.8);
-}
-
-.btn-press {
+}`,
+  },
+  {
+    id: "press",
+    name: "3D Press",
+    category: "Tactile",
+    label: "Click Me",
+    className: "btn-press",
+    html: `<button class="btn-press">Click Me</button>`,
+    css: `.btn-press {
   color: #fff;
   font-weight: 600;
   padding: 13px 28px;
@@ -135,9 +159,16 @@ body {
 .btn-press:active {
   transform: translateY(6px);
   box-shadow: 0 0 0 #007a63;
-}
-
-.btn-gooey {
+}`,
+  },
+  {
+    id: "gooey",
+    name: "Gooey",
+    category: "Playful",
+    label: "Subscribe",
+    className: "btn-gooey",
+    html: `<button class="btn-gooey">Subscribe</button>`,
+    css: `.btn-gooey {
   color: #fff;
   font-weight: 600;
   padding: 13px 28px;
@@ -155,9 +186,16 @@ body {
 
 .btn-gooey:active {
   transform: scale(0.96);
-}
-
-.btn-retro {
+}`,
+  },
+  {
+    id: "retro",
+    name: "Retro",
+    category: "Skeuomorphic",
+    label: "Download",
+    className: "btn-retro",
+    html: `<button class="btn-retro">Download</button>`,
+    css: `.btn-retro {
   color: #3f1d04;
   font-weight: 700;
   padding: 13px 28px;
@@ -172,4 +210,6 @@ body {
 .btn-retro:active {
   transform: translateY(2px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 1px 0 #c97f0a;
-}
+}`,
+  },
+];
