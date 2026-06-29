@@ -1,4 +1,4 @@
-import type { ButtonDef } from "@/data/buttons";
+import type { ButtonDef, ParametricButtonDef } from "@/registry/buttons";
 import { Controls, sizePresets } from "@/lib/playground-types";
 import { hexToRgba, readableTextColor, shade } from "@/lib/color";
 
@@ -10,7 +10,7 @@ export type StyleSet = {
   active: StyleMap;
 };
 
-export function computeStyleSet(button: ButtonDef, controls: Controls): StyleSet {
+export function computeStyleSet(button: ParametricButtonDef, controls: Controls): StyleSet {
   const { radius, size, accent, shadow, speed, blur, glow } = controls;
   const preset = sizePresets[size];
 
@@ -154,10 +154,11 @@ function styleToCssLines(style: StyleMap) {
 }
 
 export function buildHtml(button: ButtonDef) {
+  if (button.kind === "custom") return button.html;
   return `<button class="btn-${button.id}">${button.label}</button>`;
 }
 
-export function buildCss(button: ButtonDef, controls: Controls) {
+export function buildCss(button: ParametricButtonDef, controls: Controls) {
   const { base, hover, active } = computeStyleSet(button, controls);
   const blocks = [`.btn-${button.id} {\n${styleToCssLines(base)}\n}`];
   if (Object.keys(hover).length) blocks.push(`.btn-${button.id}:hover {\n${styleToCssLines(hover)}\n}`);
@@ -165,7 +166,7 @@ export function buildCss(button: ButtonDef, controls: Controls) {
   return blocks.join("\n\n");
 }
 
-export function buildTailwind(button: ButtonDef, controls: Controls) {
+export function buildTailwind(button: ParametricButtonDef, controls: Controls) {
   const { base } = computeStyleSet(button, controls);
   const classes = [
     "font-semibold",
@@ -190,7 +191,7 @@ export function buildTailwind(button: ButtonDef, controls: Controls) {
   return `<button class="${classes.join(" ")}">\n  ${button.label}\n</button>`;
 }
 
-export function buildReact(button: ButtonDef, controls: Controls) {
+export function buildReact(button: ParametricButtonDef, controls: Controls) {
   const { base } = computeStyleSet(button, controls);
   const pascal = button.name.replace(/[^a-zA-Z0-9]/g, "");
   const styleEntries = Object.entries(base)
@@ -211,7 +212,7 @@ ${styleEntries}
 }`;
 }
 
-export function buildMotion(button: ButtonDef, controls: Controls) {
+export function buildMotion(button: ParametricButtonDef, controls: Controls) {
   const { base, hover, active } = computeStyleSet(button, controls);
   const pascal = button.name.replace(/[^a-zA-Z0-9]/g, "");
   const print = (style: StyleMap, indent = "    ") =>
@@ -244,7 +245,13 @@ ${print(active)}
 
 export type CodeVariant = "html" | "css" | "tailwind" | "react" | "motion";
 
+export const variantsFor = (button: ButtonDef): CodeVariant[] =>
+  button.kind === "custom" ? ["html", "css"] : ["html", "css", "tailwind", "react", "motion"];
+
 export function buildCode(button: ButtonDef, controls: Controls, variant: CodeVariant) {
+  if (button.kind === "custom") {
+    return variant === "css" ? button.css : buildHtml(button);
+  }
   switch (variant) {
     case "html":
       return buildHtml(button);

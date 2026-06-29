@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { buttons, type ButtonDef } from "@/data/buttons";
+import { buttons, type ButtonDef } from "@/registry/buttons";
 
 export function RelatedComponents({ current }: { current: ButtonDef }) {
   const related = buttons.filter((b) => b.id !== current.id).slice(0, 3);

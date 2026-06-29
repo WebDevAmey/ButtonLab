@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion, type TargetAndTransition } from "motion/react";
 import { Maximize2, Moon, RotateCcw, Sun } from "lucide-react";
-import type { ButtonDef } from "@/data/buttons";
+import type { ButtonDef } from "@/registry/buttons";
 import { usePlayground } from "@/lib/playground-context";
-import { computeStyleSet } from "@/lib/codegen";
+import { ButtonPreview } from "@/components/ButtonPreview";
 import { Button } from "@/components/ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
@@ -21,7 +20,6 @@ const backgrounds: Record<string, string> = {
 
 function PreviewSurface({ button, expanded = false }: { button: ButtonDef; expanded?: boolean }) {
   const { controls, preview, background } = usePlayground();
-  const { base, hover, active } = computeStyleSet(button, controls);
 
   return (
     <div
@@ -32,14 +30,7 @@ function PreviewSurface({ button, expanded = false }: { button: ButtonDef; expan
         preview === "dark" && backgrounds[background]
       )}
     >
-      <motion.button
-        style={base as React.CSSProperties}
-        whileHover={hover as TargetAndTransition}
-        whileTap={active as TargetAndTransition}
-        transition={{ duration: controls.speed / 1000 }}
-      >
-        {button.label}
-      </motion.button>
+      <ButtonPreview button={button} controls={controls} />
     </div>
   );
 }

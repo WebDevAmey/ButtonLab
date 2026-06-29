@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { buttons, getButton } from "@/data/buttons";
+import { buttons, getButton } from "@/registry/buttons";
 import { ComponentPage } from "@/components/component-page/component-page";
 
 export function generateStaticParams() {

@@ -5,12 +5,12 @@ import { motion } from "motion/react";
 import { ExternalLink, Heart, Share2 } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { CodeBlock } from "./code-block";
-import type { ButtonDef } from "@/data/buttons";
+import type { ButtonDef } from "@/registry/buttons";
 import { usePlayground } from "@/lib/playground-context";
-import { buildCode, CodeVariant } from "@/lib/codegen";
+import { buildCode, variantsFor, CodeVariant } from "@/lib/codegen";
 import { cn } from "@/lib/utils";
 
-const tabs: { id: CodeVariant; label: string; language: string; ext: string }[] = [
+const allTabs: { id: CodeVariant; label: string; language: string; ext: string }[] = [
   { id: "html", label: "HTML", language: "markup", ext: "html" },
   { id: "css", label: "CSS", language: "css", ext: "css" },
   { id: "tailwind", label: "Tailwind", language: "markup", ext: "html" },
@@ -28,6 +28,7 @@ async function openExternalWithCode(url: string, code: string) {
 
 export function CodeTabs({ button }: { button: ButtonDef }) {
   const { controls } = usePlayground();
+  const tabs = allTabs.filter((t) => variantsFor(button).includes(t.id));
   const [active, setActive] = useState<CodeVariant>("html");
   const [favourited, setFavourited] = useState(false);
   const [shared, setShared] = useState(false);

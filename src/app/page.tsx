@@ -1,5 +1,5 @@
 import ButtonCard from "@/components/ButtonCard";
-import { buttons } from "@/data/buttons";
+import { buttons } from "@/registry/buttons";
 
 export default function Home() {
   return (

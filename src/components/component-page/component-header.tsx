@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import type { ButtonDef } from "@/data/buttons";
+import type { ButtonDef } from "@/registry/buttons";
 
 export function ComponentHeader({ button }: { button: ButtonDef }) {
   return (

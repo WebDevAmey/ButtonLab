@@ -1,6 +1,6 @@
 "use client";
 
-import type { ButtonDef } from "@/data/buttons";
+import type { ParametricButtonDef } from "@/registry/buttons";
 import { usePlayground } from "@/lib/playground-context";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 
 const swatches = ["#6366f1", "#ec4899", "#00e0b0", "#f59e0b", "#22c55e", "#ef4444", "#ffffff"];
 
-export function PlaygroundControls({ button }: { button: ButtonDef }) {
+export function PlaygroundControls({ button }: { button: ParametricButtonDef }) {
   const { controls, setControls } = usePlayground();
 
   return (

@@ -1,10 +1,14 @@
 import Link from "next/link";
-import type { ButtonDef } from "@/data/buttons";
+import type { ButtonDef } from "@/registry/buttons";
+import { ButtonPreview } from "@/components/ButtonPreview";
+import { defaultControls } from "@/lib/playground-types";
 
 export default function ButtonCard({ button }: { button: ButtonDef }) {
+  const controls = defaultControls(button.kind === "parametric" ? button.defaultAccent : "#6366f1");
+
   return (
     <article className="group flex flex-col items-center justify-center gap-7 rounded-2xl border border-zinc-800 bg-zinc-900/60 px-6 py-12 transition hover:-translate-y-1 hover:border-zinc-700">
-      <button className={`btn-${button.id}`}>{button.label}</button>
+      <ButtonPreview button={button} controls={controls} />
 
       <div className="flex flex-col items-center gap-2">
         <p className="text-sm text-zinc-500">{button.name}</p>
