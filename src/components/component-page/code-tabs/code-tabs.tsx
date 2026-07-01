@@ -11,11 +11,8 @@ import { buildCode, variantsFor, CodeVariant } from "@/lib/codegen";
 import { cn } from "@/lib/utils";
 
 const allTabs: { id: CodeVariant; label: string; language: string; ext: string }[] = [
-  { id: "html", label: "HTML", language: "markup", ext: "html" },
   { id: "css", label: "CSS", language: "css", ext: "css" },
   { id: "tailwind", label: "Tailwind", language: "markup", ext: "html" },
-  { id: "react", label: "React", language: "tsx", ext: "tsx" },
-  { id: "motion", label: "Motion", language: "tsx", ext: "tsx" },
 ];
 
 async function openExternalWithCode(url: string, code: string) {
@@ -29,7 +26,7 @@ async function openExternalWithCode(url: string, code: string) {
 export function CodeTabs({ button }: { button: ButtonDef }) {
   const { controls } = usePlayground();
   const tabs = allTabs.filter((t) => variantsFor(button).includes(t.id));
-  const [active, setActive] = useState<CodeVariant>("html");
+  const [active, setActive] = useState<CodeVariant>("css");
   const [favourited, setFavourited] = useState(false);
   const [shared, setShared] = useState(false);
 

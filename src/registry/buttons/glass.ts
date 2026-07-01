@@ -10,6 +10,6 @@ export const glass: ParametricButtonDef = {
   label: "Sign In",
   kind: "parametric",
   accentMode: "border-tint",
-  defaultAccent: "#ffffff",
+  defaultAccent: "#18181b",
   supportsBlur: true,
 };

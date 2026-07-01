@@ -10,6 +10,6 @@ export const outline: ParametricButtonDef = {
   label: "Learn More",
   kind: "parametric",
   accentMode: "border-tint",
-  defaultAccent: "#f5f5f7",
+  defaultAccent: "#27272a",
   supportsBlur: false,
 };

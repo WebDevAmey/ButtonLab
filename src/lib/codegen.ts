@@ -56,7 +56,7 @@ export function computeStyleSet(button: ParametricButtonDef, controls: Controls)
         base.background = hexToRgba(accent, 0.08);
         base.border = `1px solid ${hexToRgba(accent, 0.18)}`;
         base.backdropFilter = `blur(${blur}px)`;
-        base.color = "#ffffff";
+        base.color = readableTextColor(accent);
       } else {
         base.background = "transparent";
         base.border = `1.5px solid ${accent}`;
@@ -153,11 +153,6 @@ function styleToCssLines(style: StyleMap) {
     .join("\n");
 }
 
-export function buildHtml(button: ButtonDef) {
-  if (button.kind === "custom") return button.html;
-  return `<button class="btn-${button.id}">${button.label}</button>`;
-}
-
 export function buildCss(button: ParametricButtonDef, controls: Controls) {
   const { base, hover, active } = computeStyleSet(button, controls);
   const blocks = [`.btn-${button.id} {\n${styleToCssLines(base)}\n}`];
@@ -166,102 +161,56 @@ export function buildCss(button: ParametricButtonDef, controls: Controls) {
   return blocks.join("\n\n");
 }
 
-export function buildTailwind(button: ParametricButtonDef, controls: Controls) {
-  const { base } = computeStyleSet(button, controls);
-  const classes = [
-    "font-semibold",
-    `rounded-[${controls.radius}px]`,
-    `text-[${sizePresets[controls.size].fontSize}px]`,
-    `py-[${sizePresets[controls.size].paddingY}px]`,
-    `px-[${sizePresets[controls.size].paddingX}px]`,
-    "cursor-pointer",
-    "transition-all",
-    `duration-[${controls.speed}ms]`,
-  ];
-  if (typeof base.background === "string" && base.background.startsWith("linear-gradient")) {
-    classes.push(`bg-[${base.background.replace(/\s+/g, "_")}]`);
-  } else if (base.background) {
-    classes.push(`bg-[${String(base.background).replace(/\s+/g, "_")}]`);
-  }
-  if (base.color) classes.push(`text-[${base.color}]`);
-  if (base.border && base.border !== "none") classes.push(`border border-[${String(base.border).split(" ").slice(2).join(" ")}]`);
-  if (base.boxShadow && base.boxShadow !== "none") classes.push("shadow-lg");
-  classes.push("hover:brightness-110", "active:scale-[0.97]");
+export type CodeVariant = "css" | "tailwind";
 
+// Custom buttons are hand-written HTML/CSS snippets with no parametric
+// style model behind them, so there's nothing to translate to Tailwind.
+export function variantsFor(button: ButtonDef): CodeVariant[] {
+  if (button.kind === "custom") return ["css"];
+  return ["css", "tailwind"];
+}
+
+const TAILWIND_KEY_MAP: Record<string, (value: unknown) => string> = {
+  fontWeight: (v) => `font-[${v}]`,
+  paddingTop: (v) => `pt-[${v}px]`,
+  paddingBottom: (v) => `pb-[${v}px]`,
+  paddingLeft: (v) => `pl-[${v}px]`,
+  paddingRight: (v) => `pr-[${v}px]`,
+  fontSize: (v) => `text-[${v}px]`,
+  borderRadius: (v) => `rounded-[${v}px]`,
+  cursor: (v) => `cursor-${v}`,
+  border: (v) => (v === "none" ? "border-none" : `border-[${v}]`),
+  color: (v) => `text-[${v}]`,
+  background: (v) => `bg-[${v}]`,
+  boxShadow: (v) => (v === "none" ? "shadow-none" : `shadow-[${v}]`),
+  backdropFilter: (v) => `[backdrop-filter:${v}]`,
+  transform: (v) => `[transform:${v}]`,
+  filter: (v) => `[filter:${v}]`,
+  transitionProperty: (v) => `transition-[${v}]`,
+  transitionDuration: (v) => `duration-[${v}]`,
+  transitionTimingFunction: (v) => `ease-[${v}]`,
+};
+
+function styleToTailwindClasses(style: StyleMap) {
+  return Object.entries(style)
+    .filter(([, v]) => v !== undefined)
+    .map(([k, v]) => {
+      const mapper = TAILWIND_KEY_MAP[k];
+      return mapper ? mapper(v) : `[${toKebab(k)}:${v}]`;
+    });
+}
+
+export function buildTailwind(button: ParametricButtonDef, controls: Controls) {
+  const { base, hover, active } = computeStyleSet(button, controls);
+  const classes = [
+    ...styleToTailwindClasses(base),
+    ...styleToTailwindClasses(hover).map((c) => `hover:${c}`),
+    ...styleToTailwindClasses(active).map((c) => `active:${c}`),
+  ];
   return `<button class="${classes.join(" ")}">\n  ${button.label}\n</button>`;
 }
 
-export function buildReact(button: ParametricButtonDef, controls: Controls) {
-  const { base } = computeStyleSet(button, controls);
-  const pascal = button.name.replace(/[^a-zA-Z0-9]/g, "");
-  const styleEntries = Object.entries(base)
-    .filter(([, v]) => v !== undefined)
-    .map(([k, v]) => `    ${k}: ${typeof v === "number" && PX_KEYS.has(k) ? `${v}` : `"${v}"`},`)
-    .join("\n");
-
-  return `export function ${pascal}Button() {
-  return (
-    <button
-      style={{
-${styleEntries}
-      }}
-    >
-      ${button.label}
-    </button>
-  );
-}`;
-}
-
-export function buildMotion(button: ParametricButtonDef, controls: Controls) {
-  const { base, hover, active } = computeStyleSet(button, controls);
-  const pascal = button.name.replace(/[^a-zA-Z0-9]/g, "");
-  const print = (style: StyleMap, indent = "    ") =>
-    Object.entries(style)
-      .filter(([, v]) => v !== undefined)
-      .map(([k, v]) => `${indent}${k}: ${typeof v === "number" && PX_KEYS.has(k) ? `${v}` : `"${v}"`},`)
-      .join("\n");
-
-  return `import { motion } from "motion/react";
-
-export function ${pascal}Button() {
-  return (
-    <motion.button
-      style={{
-${print(base)}
-      }}
-      whileHover={{
-${print(hover)}
-      }}
-      whileTap={{
-${print(active)}
-      }}
-      transition={{ duration: ${controls.speed / 1000} }}
-    >
-      ${button.label}
-    </motion.button>
-  );
-}`;
-}
-
-export type CodeVariant = "html" | "css" | "tailwind" | "react" | "motion";
-
-export const variantsFor = (button: ButtonDef): CodeVariant[] =>
-  button.kind === "custom" ? ["html", "css"] : ["html", "css", "tailwind", "react", "motion"];
-
 export function buildCode(button: ButtonDef, controls: Controls, variant: CodeVariant) {
-  if (button.kind === "custom") {
-    return variant === "css" ? button.css : buildHtml(button);
-  }
-  switch (variant) {
-    case "html":
-      return buildHtml(button);
-    case "css":
-      return buildCss(button, controls);
-    case "tailwind":
-      return buildTailwind(button, controls);
-    case "react":
-      return buildReact(button, controls);
-    case "motion":
-      return buildMotion(button, controls);
-  }
+  if (button.kind === "custom") return button.css;
+  return variant === "tailwind" ? buildTailwind(button, controls) : buildCss(button, controls);
 }
