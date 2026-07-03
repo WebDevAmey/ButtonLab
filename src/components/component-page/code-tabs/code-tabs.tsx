@@ -55,12 +55,6 @@ export function CodeTabs({ button }: { button: ButtonDef }) {
                 {tab.label}
               </TabsTrigger>
             ))}
-            <span
-              className="cursor-not-allowed rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground/40"
-              title="Vue support is coming soon"
-            >
-              Vue
-            </span>
           </TabsList>
 
           <div className="flex items-center gap-1">

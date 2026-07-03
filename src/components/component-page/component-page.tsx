@@ -4,7 +4,6 @@ import { ComponentHeader } from "./component-header";
 import { InteractivePreview } from "./interactive-preview";
 import { PlaygroundControls } from "./playground-controls";
 import { CodeTabs } from "./code-tabs/code-tabs";
-import { RelatedComponents } from "./related-components";
 
 export function ComponentPage({ button }: { button: ButtonDef }) {
   return (
@@ -14,7 +13,6 @@ export function ComponentPage({ button }: { button: ButtonDef }) {
         <InteractivePreview button={button} />
         {button.kind === "parametric" && <PlaygroundControls button={button} />}
         <CodeTabs button={button} />
-        <RelatedComponents current={button} />
       </div>
     </PlaygroundProvider>
   );
