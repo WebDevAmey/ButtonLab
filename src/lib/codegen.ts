@@ -1,5 +1,5 @@
 import type { ButtonDef, ParametricButtonDef } from "@/registry/buttons";
-import { Controls, sizePresets } from "@/lib/playground-types";
+import { Controls, defaultControls, sizePresets } from "@/lib/playground-types";
 import { hexToRgba, readableTextColor, shade } from "@/lib/color";
 
 export type StyleMap = Record<string, string | number>;
@@ -161,58 +161,10 @@ export function buildCss(button: ParametricButtonDef, controls: Controls) {
   return blocks.join("\n\n");
 }
 
-export type CodeVariant = "css" | "tailwind";
-
-// Custom buttons are hand-written snippets with no parametric style model
-// behind them. Most are authored as plain CSS, but some are authored
-// directly in Tailwind (empty `css`) — those show their HTML under the
-// Tailwind tab instead.
-export function variantsFor(button: ButtonDef): CodeVariant[] {
-  if (button.kind === "custom") return button.css.trim() ? ["css"] : ["tailwind"];
-  return ["css", "tailwind"];
-}
-
-const TAILWIND_KEY_MAP: Record<string, (value: unknown) => string> = {
-  fontWeight: (v) => `font-[${v}]`,
-  paddingTop: (v) => `pt-[${v}px]`,
-  paddingBottom: (v) => `pb-[${v}px]`,
-  paddingLeft: (v) => `pl-[${v}px]`,
-  paddingRight: (v) => `pr-[${v}px]`,
-  fontSize: (v) => `text-[${v}px]`,
-  borderRadius: (v) => `rounded-[${v}px]`,
-  cursor: (v) => `cursor-${v}`,
-  border: (v) => (v === "none" ? "border-none" : `border-[${v}]`),
-  color: (v) => `text-[${v}]`,
-  background: (v) => `bg-[${v}]`,
-  boxShadow: (v) => (v === "none" ? "shadow-none" : `shadow-[${v}]`),
-  backdropFilter: (v) => `[backdrop-filter:${v}]`,
-  transform: (v) => `[transform:${v}]`,
-  filter: (v) => `[filter:${v}]`,
-  transitionProperty: (v) => `transition-[${v}]`,
-  transitionDuration: (v) => `duration-[${v}]`,
-  transitionTimingFunction: (v) => `ease-[${v}]`,
-};
-
-function styleToTailwindClasses(style: StyleMap) {
-  return Object.entries(style)
-    .filter(([, v]) => v !== undefined)
-    .map(([k, v]) => {
-      const mapper = TAILWIND_KEY_MAP[k];
-      return mapper ? mapper(v) : `[${toKebab(k)}:${v}]`;
-    });
-}
-
-export function buildTailwind(button: ParametricButtonDef, controls: Controls) {
-  const { base, hover, active } = computeStyleSet(button, controls);
-  const classes = [
-    ...styleToTailwindClasses(base),
-    ...styleToTailwindClasses(hover).map((c) => `hover:${c}`),
-    ...styleToTailwindClasses(active).map((c) => `active:${c}`),
-  ];
-  return `<button class="${classes.join(" ")}">\n  ${button.label}\n</button>`;
-}
-
-export function buildCode(button: ButtonDef, controls: Controls, variant: CodeVariant) {
-  if (button.kind === "custom") return variant === "tailwind" ? button.html : button.css;
-  return variant === "tailwind" ? buildTailwind(button, controls) : buildCss(button, controls);
+// Custom buttons are hand-written snippets; most are authored as plain CSS,
+// but some are authored directly in Tailwind (empty `css`) — those copy
+// their HTML instead.
+export function getCode(button: ButtonDef): string {
+  if (button.kind === "custom") return button.css.trim() ? button.css : button.html;
+  return buildCss(button, defaultControls(button.defaultAccent));
 }

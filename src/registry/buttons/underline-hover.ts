@@ -7,6 +7,8 @@ export const underlineHover: CustomButtonDef = {
   description: "A plain text button with an underline that grows in from the left on hover.",
   tags: ["underline", "text", "tailwind"],
   label: "Hover Me",
+  prompt:
+    "Using Tailwind CSS, create a plain text button labeled \"Hover Me\" in medium-weight indigo-600 text with no background or border. Wrap the label in a relatively-positioned span and add a 2px-tall absolutely-positioned span beneath it spanning the full width, colored indigo-600, scaled to 0 on the x-axis from the left origin. On hover of the button, scale that underline span to 100% over 300ms ease-out so it grows in from the left.",
   kind: "custom",
   html: `<button class="group px-6 py-3 text-lg font-medium text-indigo-600">
   <span class="relative inline-block">

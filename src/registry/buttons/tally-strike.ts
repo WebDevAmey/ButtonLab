@@ -8,6 +8,8 @@ export const tallyStrike: CustomButtonDef = {
     "A monospace button that draws four tally marks in sequence on hover, the last one struck through.",
   tags: ["tally", "mono", "tailwind"],
   label: "TALLY",
+  prompt:
+    "Using Tailwind CSS, create a 56px-tall, 176px-wide button in monospace text, labeled \"TALLY\", on a neutral-950 background with a neutral-700 border and rounded-md corners, laid out as a flex row with the label followed by four thin 2px-wide, 20px-tall rose-500 bars scaled to 0 on the y-axis from the bottom origin. On hover, scale each bar to full height with staggered delays of 0ms, 100ms, 200ms, and 300ms; rotate the fourth bar 20 degrees so it reads as a strike-through tally mark.",
   kind: "custom",
   html: `<button class="group inline-flex h-14 w-44 items-center justify-center gap-1.5 rounded-md border border-neutral-700 bg-neutral-950 font-mono text-sm text-neutral-200">
   <span class="relative z-10 mr-2">TALLY</span>

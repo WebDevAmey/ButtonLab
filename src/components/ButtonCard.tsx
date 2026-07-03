@@ -1,6 +1,7 @@
-import Link from "next/link";
 import type { ButtonDef } from "@/registry/buttons";
 import { ButtonPreview } from "@/components/ButtonPreview";
+import { CardActions } from "@/components/CardActions";
+import { getCode } from "@/lib/codegen";
 import { defaultControls } from "@/lib/playground-types";
 
 export default function ButtonCard({ button }: { button: ButtonDef }) {
@@ -18,12 +19,7 @@ export default function ButtonCard({ button }: { button: ButtonDef }) {
 
       <div className="flex flex-col items-center gap-2">
         <p className="text-sm text-muted-foreground">{button.name}</p>
-        <Link
-          href={`/button/${button.id}`}
-          className="rounded-md border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground opacity-0 transition group-hover/card:opacity-100 hover:border-foreground/40 hover:text-foreground"
-        >
-          Get code
-        </Link>
+        <CardActions code={getCode(button)} prompt={button.prompt} />
       </div>
     </article>
   );

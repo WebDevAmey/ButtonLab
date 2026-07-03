@@ -8,6 +8,8 @@ export const pulseSeismograph: CustomButtonDef = {
     "A monospace terminal-style button that swaps its label for an animated seismograph-like pulse of bars on hover.",
   tags: ["pulse", "bars", "tailwind"],
   label: "PULSE",
+  prompt:
+    "Using Tailwind CSS, create a 56px-tall, 176px-wide button with a neutral-950 background, emerald-500/30 border, rounded-lg corners, monospace emerald-400 text, and overflow hidden, labeled \"PULSE\" centered. Add a second absolutely-positioned full-size flex row (initially invisible) containing six thin 4px-wide emerald-500 bars of varying resting heights (2,6,3,8,2,5 in arbitrary units), each hidden until hover. On hover, fade the \"PULSE\" label out and fade the bar row in over 300ms, with each bar transitioning to its full seismograph height with staggered delays (0ms, 75ms, 150ms, 200ms, 300ms, 400ms), producing a pulsing waveform effect.",
   kind: "custom",
   html: `<button class="group relative inline-flex h-14 w-44 items-center justify-center overflow-hidden rounded-lg border border-emerald-500/30 bg-neutral-950 font-mono text-sm text-emerald-400">
   <span class="absolute z-10 transition-opacity duration-300 group-hover:opacity-0">

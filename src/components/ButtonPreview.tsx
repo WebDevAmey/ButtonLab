@@ -7,9 +7,8 @@ import { Controls } from "@/lib/playground-types";
 
 /**
  * Renders a single button from the registry, regardless of `kind`.
- * Parametric buttons are driven by `computeStyleSet` + the given
- * `controls`. Custom buttons render their own hand-written HTML/CSS
- * verbatim — `controls` is ignored for those.
+ * Parametric buttons are driven by `computeStyleSet` + default controls.
+ * Custom buttons render their own hand-written HTML/CSS verbatim.
  */
 export function ButtonPreview({
   button,
