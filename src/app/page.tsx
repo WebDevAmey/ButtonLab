@@ -3,7 +3,7 @@ import { buttons } from "@/registry/buttons";
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col bg-background">
+    <div className="flex flex-1 flex-col" style={{ backgroundColor: "#f7f5f8" }}>
       <header className="px-6 pt-24 pb-16 text-center">
         <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
           ButtonLab
