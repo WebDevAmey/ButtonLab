@@ -17,6 +17,11 @@ import { scanRing } from "./scan-ring";
 import { violetBorder } from "./violet-border";
 import { radialBloom } from "./radial-bloom";
 import { slideText } from "./slide-text";
+import { hoverArrow } from "./hover-arrow";
+import { liquidFill } from "./liquid-fill";
+import { splitCurtain } from "./split-curtain";
+import { pulseSeismograph } from "./pulse-seismograph";
+import { outlineScale } from "./outline-scale";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -39,6 +44,11 @@ export const buttons: ButtonDef[] = [
   violetBorder,
   radialBloom,
   slideText,
+  hoverArrow,
+  liquidFill,
+  splitCurtain,
+  pulseSeismograph,
+  outlineScale,
 ];
 
 export function getButton(id: string) {
