@@ -163,10 +163,12 @@ export function buildCss(button: ParametricButtonDef, controls: Controls) {
 
 export type CodeVariant = "css" | "tailwind";
 
-// Custom buttons are hand-written HTML/CSS snippets with no parametric
-// style model behind them, so there's nothing to translate to Tailwind.
+// Custom buttons are hand-written snippets with no parametric style model
+// behind them. Most are authored as plain CSS, but some are authored
+// directly in Tailwind (empty `css`) — those show their HTML under the
+// Tailwind tab instead.
 export function variantsFor(button: ButtonDef): CodeVariant[] {
-  if (button.kind === "custom") return ["css"];
+  if (button.kind === "custom") return button.css.trim() ? ["css"] : ["tailwind"];
   return ["css", "tailwind"];
 }
 
@@ -211,6 +213,6 @@ export function buildTailwind(button: ParametricButtonDef, controls: Controls) {
 }
 
 export function buildCode(button: ButtonDef, controls: Controls, variant: CodeVariant) {
-  if (button.kind === "custom") return button.css;
+  if (button.kind === "custom") return variant === "tailwind" ? button.html : button.css;
   return variant === "tailwind" ? buildTailwind(button, controls) : buildCss(button, controls);
 }
