@@ -22,6 +22,11 @@ import { liquidFill } from "./liquid-fill";
 import { splitCurtain } from "./split-curtain";
 import { pulseSeismograph } from "./pulse-seismograph";
 import { outlineScale } from "./outline-scale";
+import { ghostFade } from "./ghost-fade";
+import { statusDot } from "./status-dot";
+import { skewPress } from "./skew-press";
+import { doubleBorder } from "./double-border";
+import { letterSpacing } from "./letter-spacing";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -49,6 +54,11 @@ export const buttons: ButtonDef[] = [
   splitCurtain,
   pulseSeismograph,
   outlineScale,
+  ghostFade,
+  statusDot,
+  skewPress,
+  doubleBorder,
+  letterSpacing,
 ];
 
 export function getButton(id: string) {
