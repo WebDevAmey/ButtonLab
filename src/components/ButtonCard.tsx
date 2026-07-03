@@ -8,7 +8,7 @@ export default function ButtonCard({ button }: { button: ButtonDef }) {
 
   return (
     <article
-      className="group flex min-h-[320px] flex-col items-center justify-center gap-8 rounded-3xl px-8 py-16 transition hover:-translate-y-1"
+      className="group/card flex min-h-[320px] flex-col items-center justify-center gap-8 rounded-3xl px-8 py-16"
       style={{
         backgroundColor: "#e0e5ec",
         boxShadow: "8px 8px 16px #b8bec7, -8px -8px 16px #ffffff",
@@ -20,7 +20,7 @@ export default function ButtonCard({ button }: { button: ButtonDef }) {
         <p className="text-sm text-muted-foreground">{button.name}</p>
         <Link
           href={`/button/${button.id}`}
-          className="rounded-md border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground opacity-0 transition group-hover:opacity-100 hover:border-foreground/40 hover:text-foreground"
+          className="rounded-md border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground opacity-0 transition group-hover/card:opacity-100 hover:border-foreground/40 hover:text-foreground"
         >
           Get code
         </Link>

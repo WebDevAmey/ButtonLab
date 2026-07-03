@@ -10,6 +10,13 @@ import { shine } from "./shine";
 import { slideFill } from "./slide-fill";
 import { rivetPress } from "./rivet-press";
 import { shimmerSwipe } from "./shimmer-swipe";
+import { xrayScanner } from "./xray-scanner";
+import { underlineHover } from "./underline-hover";
+import { tallyStrike } from "./tally-strike";
+import { scanRing } from "./scan-ring";
+import { violetBorder } from "./violet-border";
+import { radialBloom } from "./radial-bloom";
+import { slideText } from "./slide-text";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -25,6 +32,13 @@ export const buttons: ButtonDef[] = [
   slideFill,
   rivetPress,
   shimmerSwipe,
+  xrayScanner,
+  underlineHover,
+  tallyStrike,
+  scanRing,
+  violetBorder,
+  radialBloom,
+  slideText,
 ];
 
 export function getButton(id: string) {
