@@ -15,14 +15,6 @@ const allTabs: { id: CodeVariant; label: string; language: string; ext: string }
   { id: "tailwind", label: "Tailwind", language: "markup", ext: "html" },
 ];
 
-async function openExternalWithCode(url: string, code: string) {
-  try {
-    await navigator.clipboard.writeText(code);
-  } finally {
-    window.open(url, "_blank", "noopener,noreferrer");
-  }
-}
-
 export function CodeTabs({ button }: { button: ButtonDef }) {
   const { controls } = usePlayground();
   const tabs = allTabs.filter((t) => variantsFor(button).includes(t.id));
@@ -90,17 +82,6 @@ export function CodeTabs({ button }: { button: ButtonDef }) {
           </TabsContent>
         ))}
       </Tabs>
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        <ExternalAction
-          label="Open in CodeSandbox"
-          onClick={() => openExternalWithCode("https://codesandbox.io/s/", code)}
-        />
-        <ExternalAction
-          label="Open in StackBlitz"
-          onClick={() => openExternalWithCode("https://stackblitz.com/", code)}
-        />
-      </div>
     </section>
   );
 }
@@ -127,17 +108,6 @@ function IconButton({
       )}
     >
       {children}
-    </button>
-  );
-}
-
-function ExternalAction({ label, onClick }: { label: string; onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      className="rounded-md border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-zinc-600 hover:text-foreground"
-    >
-      {label}
     </button>
   );
 }
