@@ -32,6 +32,12 @@ import { terminalType } from "./terminal-type";
 import { stickerPeel } from "./sticker-peel";
 import { hourglassDrain } from "./hourglass-drain";
 import { morseSos } from "./morse-sos";
+import { compassLock } from "./compass-lock";
+import { eclipse } from "./eclipse";
+import { gradientLink } from "./gradient-link";
+import { playNow } from "./play-now";
+import { shredder } from "./shredder";
+import { chamberDoor } from "./chamber-door";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -69,6 +75,12 @@ export const buttons: ButtonDef[] = [
   stickerPeel,
   hourglassDrain,
   morseSos,
+  compassLock,
+  eclipse,
+  gradientLink,
+  playNow,
+  shredder,
+  chamberDoor,
 ];
 
 export function getButton(id: string) {
