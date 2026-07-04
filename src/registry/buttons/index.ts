@@ -38,6 +38,10 @@ import { gradientLink } from "./gradient-link";
 import { playNow } from "./play-now";
 import { shredder } from "./shredder";
 import { chamberDoor } from "./chamber-door";
+import { vinylSpin } from "./vinyl-spin";
+import { risingTide } from "./rising-tide";
+import { dominoCascade } from "./domino-cascade";
+import { paperFan } from "./paper-fan";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -81,6 +85,10 @@ export const buttons: ButtonDef[] = [
   playNow,
   shredder,
   chamberDoor,
+  vinylSpin,
+  risingTide,
+  dominoCascade,
+  paperFan,
 ];
 
 export function getButton(id: string) {
