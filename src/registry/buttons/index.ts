@@ -27,6 +27,11 @@ import { statusDot } from "./status-dot";
 import { skewPress } from "./skew-press";
 import { doubleBorder } from "./double-border";
 import { letterSpacing } from "./letter-spacing";
+import { orbitPing } from "./orbit-ping";
+import { terminalType } from "./terminal-type";
+import { stickerPeel } from "./sticker-peel";
+import { hourglassDrain } from "./hourglass-drain";
+import { morseSos } from "./morse-sos";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -59,6 +64,11 @@ export const buttons: ButtonDef[] = [
   skewPress,
   doubleBorder,
   letterSpacing,
+  orbitPing,
+  terminalType,
+  stickerPeel,
+  hourglassDrain,
+  morseSos,
 ];
 
 export function getButton(id: string) {
