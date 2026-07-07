@@ -4,18 +4,14 @@ export const starlightGenerate: CustomButtonDef = {
   id: "starlight-generate",
   name: "Starlight Generate",
   category: "Mechanical",
-  description: "A button whose label flips letter-by-letter into 'Generating' on click while a literal progress ring circles its icon, then flips back once the ring completes.",
+  description: "A button whose label flips letter-by-letter into 'Generating' on hover while a literal progress ring circles its icon, then flips back on mouse leave.",
   tags: ["generate", "flip", "progress", "twinkle"],
   label: "Generate",
   kind: "custom",
   html: `
-<button class="starlight-generate-btn" onclick="
-  const btn = this;
-  if (btn.classList.contains('is-generating')) return;
-  btn.classList.add('is-generating');
-  clearTimeout(btn._genTimer);
-  btn._genTimer = setTimeout(() => { btn.classList.remove('is-generating'); }, 2400);
-">
+<button class="starlight-generate-btn"
+  onmouseenter="this.classList.add('is-generating')"
+  onmouseleave="this.classList.remove('is-generating')">
   <span class="starlight-generate-btn__ring">
     <svg class="starlight-generate-btn__spark" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 2 L13.8 9.2 L21 11 L13.8 12.8 L12 20 L10.2 12.8 L3 11 L10.2 9.2 Z"></path>
@@ -36,8 +32,8 @@ export const starlightGenerate: CustomButtonDef = {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 28px;
+  gap: 8px;
+  padding: 10px 22px;
   background: #121014;
   border: 1px solid #3a3440;
   border-radius: 999px;
@@ -92,9 +88,11 @@ export const starlightGenerate: CustomButtonDef = {
 
 .starlight-generate-btn__stack {
   position: relative;
-  display: inline-block;
-  height: 1.1em;
-  min-width: 6.5em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.3em;
+  width: 6.5em;
   perspective: 200px;
 }
 
@@ -103,6 +101,10 @@ export const starlightGenerate: CustomButtonDef = {
   left: 0;
   top: 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   font-family: system-ui, sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -137,5 +139,5 @@ export const starlightGenerate: CustomButtonDef = {
 .starlight-generate-btn__word span:nth-child(9) { transition-delay: 240ms; }
 .starlight-generate-btn__word span:nth-child(10) { transition-delay: 270ms; }
   `,
-  prompt: "A button with two stacked labels ('Generate' idle, 'Generating' active), each split into per-letter spans with staggered transition-delays. Clicking adds an is-generating class: idle letters rotateX(90deg) away while active letters rotateX in from -90deg, staggered letter-by-letter inside a perspective container for a real 3D flip rather than an opacity cross-fade. Simultaneously a ::before ring around the icon spins continuously and the icon's idle twinkle animation is replaced by a steady lit state. After a fixed 2.4s timeout the class is removed and both the letters and ring reverse in sync, so the ring's spin duration reads as an actual progress indicator rather than decoration.",
+  prompt: "A button with two stacked labels ('Generate' idle, 'Generating' active), each split into per-letter spans with staggered transition-delays. Hovering adds an is-generating class: idle letters rotateX(90deg) away while active letters rotateX in from -90deg, staggered letter-by-letter inside a perspective container for a real 3D flip rather than an opacity cross-fade. Simultaneously a ::before ring around the icon spins continuously and the icon's idle twinkle animation is replaced by a steady lit state. On mouse leave the class is removed and both the letters and ring reverse in sync.",
 };
