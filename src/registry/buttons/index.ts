@@ -81,6 +81,7 @@ import { flashcardFlip } from "./flashcard-flip";
 import { arcStart } from "./arc-start";
 import { expandingPillSend } from "./expanding-pill";
 import { emeraldPremium } from "./emerald-premium";
+import { rainbowButton } from "./rainbow-button";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -167,10 +168,23 @@ export const buttons: ButtonDef[] = [
   arcStart,
   expandingPillSend,
   emeraldPremium,
+  rainbowButton,
 ];
 
 export function getButton(id: string) {
   return buttons.find((b) => b.id === id);
 }
 
-export type { ButtonDef, ParametricButtonDef, CustomButtonDef, AccentMode } from "../types";
+/**
+ * Server-safe version — strips `Component` so it can be passed from Server
+ * Components to Client Components without serialization errors.
+ */
+export const serializableButtons = buttons.map((b) => {
+  if (b.kind === "component") {
+    const { Component: _, ...rest } = b;
+    return rest;
+  }
+  return b;
+});
+
+export type { ButtonDef, ParametricButtonDef, CustomButtonDef, AccentMode, SerializableButtonDef } from "../types";

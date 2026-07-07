@@ -1,26 +1,15 @@
 "use client";
 
 import React from "react";
-import { motion, MotionProps } from "framer-motion";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
-type ShimmerMaskProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  MotionProps & {
-    children?: React.ReactNode;
-    as?: any;
-  };
-
-export const ShimmerMaskComponent: React.FC<ShimmerMaskProps> = ({
-  children = "Browse Components",
-  className = "",
-  as = "button",
-  ...rest
-}) => {
-  const Component = (motion as any)[as] || motion.button;
-
+export const ShimmerMaskComponent: React.FC<{
+  children?: React.ReactNode;
+  className?: string;
+}> = ({ children = "Browse Components", className = "" }) => {
   return (
-    <Component
-      {...rest}
+    <motion.button
       whileHover={{ scale: 1.01 }}
       whileTap={{ scale: 0.97 }}
       transition={{
@@ -36,7 +25,6 @@ export const ShimmerMaskComponent: React.FC<ShimmerMaskProps> = ({
         className,
       )}
     >
-      {/* Text with shine mask */}
       <motion.span
         className="tracking-wide font-light flex items-center justify-center h-full w-full relative z-10"
         style={{
@@ -45,8 +33,8 @@ export const ShimmerMaskComponent: React.FC<ShimmerMaskProps> = ({
           maskImage:
             "linear-gradient(-75deg, white calc(var(--mask-x) + 20%), transparent calc(var(--mask-x) + 30%), white calc(var(--mask-x) + 100%))",
         }}
-        initial={{ ["--mask-x" as any]: "100%" } as any}
-        animate={{ ["--mask-x" as any]: "-100%" } as any}
+        initial={{ ["--mask-x" as any]: "100%" }}
+        animate={{ ["--mask-x" as any]: "-100%" }}
         transition={{
           repeat: Infinity,
           duration: 1,
@@ -57,7 +45,6 @@ export const ShimmerMaskComponent: React.FC<ShimmerMaskProps> = ({
         {children}
       </motion.span>
 
-      {/* Border shine effect uses the --shine variable so it adapts to theme */}
       <motion.span
         className="block absolute inset-0 rounded-md p-px"
         style={{
@@ -79,6 +66,6 @@ export const ShimmerMaskComponent: React.FC<ShimmerMaskProps> = ({
           repeatDelay: 1,
         }}
       />
-    </Component>
+    </motion.button>
   );
 };

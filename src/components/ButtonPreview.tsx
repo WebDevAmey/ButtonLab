@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, type TargetAndTransition } from "motion/react";
-import type { ButtonDef } from "@/registry/buttons";
+import type { SerializableButtonDef } from "@/registry/buttons";
+import { componentMap } from "@/registry/button-components";
 import { computeStyleSet } from "@/lib/codegen";
 import { Controls } from "@/lib/playground-types";
 import { useEffect, useRef } from "react";
@@ -15,7 +16,7 @@ export function ButtonPreview({
   button,
   controls,
 }: {
-  button: ButtonDef;
+  button: SerializableButtonDef;
   controls: Controls;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,8 +29,9 @@ export function ButtonPreview({
   }, [button]);
 
   if (button.kind === "component") {
-    const Component = button.Component;
-    return <Component />;
+    const Component = componentMap[button.id];
+    if (Component) return <Component>{button.label}</Component>;
+    return null;
   }
 
   if (button.kind === "custom") {

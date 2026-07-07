@@ -1,13 +1,13 @@
 import { ButtonGrid } from "@/components/ButtonGrid";
 import { Hero } from "@/components/Hero";
-import { buttons } from "@/registry/buttons";
+import { serializableButtons } from "@/registry/buttons";
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col" style={{ backgroundColor: "#f7f5f8" }}>
+    <div className="flex flex-1 flex-col bg-background">
       <Hero />
 
-      <ButtonGrid buttons={buttons} />
+      <ButtonGrid buttons={serializableButtons} />
 
       <footer className="border-t border-border px-6 py-8 text-center text-xs text-muted-foreground">
         Built with Next.js &amp; Tailwind CSS · inspired by{" "}

@@ -37,7 +37,7 @@ function CopyAction({
       className={cn(
         "inline-flex h-9 items-center gap-1.5 rounded-md border border-border/60 bg-white/40 px-3 text-xs font-medium text-muted-foreground",
         "transition-colors duration-200 hover:border-foreground/40 hover:bg-white/70 hover:text-foreground",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#e0e5ec]",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-card",
         copied && "border-emerald-500/50 text-emerald-700"
       )}
     >

@@ -55,4 +55,10 @@ export type ComponentButtonDef = BaseButtonDef & {
   Component: React.ComponentType<any>;
 };
 
+/**
+ * Serializable button data — no `Component` reference, safe to pass from
+ * Server Components to Client Components.
+ */
+export type SerializableButtonDef = ParametricButtonDef | CustomButtonDef | (BaseButtonDef & { kind: "component" });
+
 export type ButtonDef = ParametricButtonDef | CustomButtonDef | ComponentButtonDef;

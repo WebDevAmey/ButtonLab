@@ -1,4 +1,4 @@
-import type { ButtonDef, ParametricButtonDef } from "@/registry/buttons";
+import type { ButtonDef, ParametricButtonDef, SerializableButtonDef } from "@/registry/buttons";
 import { Controls, defaultControls, sizePresets } from "@/lib/playground-types";
 import { hexToRgba, readableTextColor, shade } from "@/lib/color";
 
@@ -165,7 +165,7 @@ export function buildCss(button: ParametricButtonDef, controls: Controls) {
 // but some are authored directly in Tailwind (empty `css`) — those copy
 // their HTML instead.
 // Component buttons return their prompt since they're React components.
-export function getCode(button: ButtonDef): string {
+export function getCode(button: ButtonDef | SerializableButtonDef): string {
   if (button.kind === "component") return button.prompt;
   if (button.kind === "custom") return button.css.trim() ? button.css : button.html;
   return buildCss(button, defaultControls(button.defaultAccent));

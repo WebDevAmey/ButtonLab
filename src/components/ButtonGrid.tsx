@@ -3,12 +3,12 @@
 import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Search, X } from "lucide-react";
-import type { ButtonDef } from "@/registry/buttons";
+import type { SerializableButtonDef } from "@/registry/buttons";
 import ButtonCard from "@/components/ButtonCard";
 import { Magnetic } from "@/components/Magnetic";
 import { cn } from "@/lib/utils";
 
-export function ButtonGrid({ buttons }: { buttons: ButtonDef[] }) {
+export function ButtonGrid({ buttons }: { buttons: SerializableButtonDef[] }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
   const reduceMotion = useReducedMotion();
