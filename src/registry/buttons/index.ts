@@ -44,32 +44,28 @@ import { dominoCascade } from "./domino-cascade";
 import { paperFan } from "./paper-fan";
 import { softPress } from "./soft-press";
 import { inkAbsorption } from "./ink-absorption";
-import { paperCurl } from "./paper-curl";
 import { slidingHole } from "./sliding-hole";
 import { gravityDrop } from "./gravity-drop";
-import { reverseShadow } from "./reverse-shadow";
 import { slidingSlot } from "./sliding-slot";
-import { breathingCut } from "./breathing-cut";
 import { inkStamp } from "./ink-stamp";
 import { coinSlot } from "./coin-slot";
 import { sandTimer } from "./sand-timer";
-import { compassNeedle } from "./compass-needlle";
 import { drawerPull } from "./draw-pull";
 import { fogWipe } from "./fog-wipe";
 import { dogEarFold } from "./dog-ear-fold";
 import { tapeRetract } from "./tape-retract";
-import { vaultBolt } from "./vault-bolt";
 import { punchWindow } from "./punch-window";
-import { mercuryBead } from "./mercury-bead";
-import { detachedShadow } from "./detached-shadow";
 import { apertureIris } from "./aperture-iris";
 import { marionetteThread } from "./marionette-thread";
 import { clayDent } from "./clay-dent";
 import { depthFlip } from "./depth-flip";
 import { dominoRow } from "./domino-row";
-import { weighingScale } from "./weighing-scale";
-import { peephole } from "../peephole";
 import { guillotineCut } from "./guillotine-cut";
+import { dieRoll } from "./die-roll";
+import { pinwheelSpin } from "./pinwheel-spin";
+import { parallaxTilt } from "./parallax-tilt";
+import { circuitTrace } from "./circuit-trace";
+import { cipherDecode } from "./cipher-decode";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -119,33 +115,28 @@ export const buttons: ButtonDef[] = [
   paperFan,
   softPress,
   inkAbsorption,
-  paperCurl,
   slidingHole,
   gravityDrop,
-  reverseShadow,
   slidingSlot,
-  breathingCut,
   inkStamp,
   coinSlot,
   sandTimer,
-  compassNeedle,
   drawerPull,
   fogWipe,
   dogEarFold,
   tapeRetract,
-  vaultBolt,
   punchWindow,
-  mercuryBead,
-  detachedShadow,
   apertureIris,
   marionetteThread,
   clayDent,
   depthFlip,
   dominoRow,
-  weighingScale,
-  peephole,
   guillotineCut,
-  
+  dieRoll,
+  pinwheelSpin,
+  parallaxTilt,
+  circuitTrace,
+  cipherDecode,
 ];
 
 export function getButton(id: string) {
