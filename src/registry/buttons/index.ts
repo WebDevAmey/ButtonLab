@@ -42,6 +42,21 @@ import { vinylSpin } from "./vinyl-spin";
 import { risingTide } from "./rising-tide";
 import { dominoCascade } from "./domino-cascade";
 import { paperFan } from "./paper-fan";
+import { softPress } from "./soft-press";
+import { inkAbsorption } from "./ink-absorption";
+import { paperCurl } from "./paper-curl";
+import { slidingHole } from "./sliding-hole";
+import { gravityDrop } from "./gravity-drop";
+import { reverseShadow } from "./reverse-shadow";
+import { slidingSlot } from "./sliding-slot";
+import { breathingCut } from "./breathing-cut";
+import { inkStamp } from "./ink-stamp";
+import { coinSlot } from "./coin-slot";
+import { sandTimer } from "./sand-timer";
+import { compassNeedle } from "./compass-needlle";
+import { drawerPull } from "./draw-pull";
+import { fogWipe } from "./fog-wipe";
+import { dogEarFold } from "./dog-ear-fold";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -89,6 +104,21 @@ export const buttons: ButtonDef[] = [
   risingTide,
   dominoCascade,
   paperFan,
+  softPress,
+  inkAbsorption,
+  paperCurl,
+  slidingHole,
+  gravityDrop,
+  reverseShadow,
+  slidingSlot,
+  breathingCut,
+  inkStamp,
+  coinSlot,
+  sandTimer,
+  compassNeedle,
+  drawerPull,
+  fogWipe,
+  dogEarFold,
 ];
 
 export function getButton(id: string) {
