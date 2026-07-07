@@ -2,10 +2,10 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { buttons } from "@/registry/buttons";
 
-gsap.registerPlugin(SplitText);
+gsap.registerPlugin(ScrambleTextPlugin);
 
 export function Hero() {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -14,22 +14,15 @@ export function Hero() {
   useEffect(() => {
     if (!headingRef.current) return;
 
-    const split = SplitText.create(headingRef.current, {
-      type: "lines, words",
-      autoSplit: true,
+    gsap.to(headingRef.current, {
+      scrambleText: {
+        text: "A handful of buttons\nworth stealing.",
+        chars: "!<>-_\\/[]{}—=+*^?#________abcdefghijklmnopqrstuvwxyz",
+        revealDelay: 0.2,
+      },
+      duration: 2,
+      ease: "power2.out",
     });
-
-    gsap.from(split.words, {
-      duration: 0.8,
-      y: 100,
-      autoAlpha: 0,
-      stagger: 0.05,
-      ease: "power3.out",
-    });
-
-    return () => {
-      split.revert();
-    };
   }, []);
 
   return (
