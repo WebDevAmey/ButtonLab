@@ -48,6 +48,13 @@ export const frostedPane: CustomButtonDef = {
   color: #000000;
   letter-spacing: 0.2px;
 }
+.dark .frosted-pane-btn {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.dark .frosted-pane-btn__label {
+  color: #f4f4f5;
+}
   `,
   prompt: "A single-layer glass button using backdrop-filter: blur() with saturate() over a translucent white background (no gradient), a thin semi-transparent border, and one inset top highlight line to suggest a lit glass edge. On press, background opacity drops slightly and the shadow flips to a soft inset, avoiding the common heavy-glow over-styled glassmorphism look — restrained enough to sit over any photo or colored backdrop.",
 };

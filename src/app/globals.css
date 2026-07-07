@@ -21,6 +21,7 @@
   --input: #d5d0c7;
   --ring: #c4bdb3;
   --radius: 0.75rem;
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
   --color-1: oklch(66.2% 0.225 25.9);
   --color-2: oklch(60.4% 0.26 302);
   --color-3: oklch(69.6% 0.165 251);
@@ -122,6 +123,7 @@ body {
   --border: #333337;
   --input: #333337;
   --ring: #52525b;
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.4);
   --color-1: oklch(66.2% 0.225 25.9);
   --color-2: oklch(60.4% 0.26 302);
   --color-3: oklch(69.6% 0.165 251);

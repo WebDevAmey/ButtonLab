@@ -10,9 +10,7 @@ export default function ButtonCard({ button }: { button: SerializableButtonDef }
   return (
     <article
       className="relative flex min-h-[320px] flex-col overflow-hidden rounded-3xl bg-card"
-      style={{
-        boxShadow: "0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06)",
-      }}
+      style={{ boxShadow: "var(--card-shadow)" }}
     >
       <span className="absolute left-6 top-5 text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
         {button.category}
