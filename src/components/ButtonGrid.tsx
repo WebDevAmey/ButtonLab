@@ -89,7 +89,7 @@ export function ButtonGrid({ buttons }: { buttons: ButtonDef[] }) {
               initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
               whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.35, delay: (i % 6) * 0.04, ease: "easeOut" }}
+              transition={{ duration: 0.4, delay: (i % 6) * 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
               <ButtonCard button={button} />
             </motion.div>
