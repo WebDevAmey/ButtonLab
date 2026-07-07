@@ -1,7 +1,5 @@
 import type { ButtonDef } from "../types";
 import { gradient } from "./gradient";
-import { neumorphic } from "./neumorphic";
-import { glass } from "./glass";
 import { outline } from "./outline";
 import { neon } from "./neon";
 import { press } from "./press";
@@ -71,16 +69,11 @@ import { shardBurst } from "./shard-burst";
 import { amberKeycap } from "./amber-keycap";
 import { frostedPane } from "./frosted-pane";
 import { softEmboss } from "./soft-emboss";
-import { softToggle } from "./soft-toggle";
 import { magneticFilings } from "./magnetic-filings";
-import { spiritLevel } from "./spirit-level";
 import { kintsugiSeam } from "./kintsugi-seam";
 import { returnCarriage } from "./return-carriage";
-import { sunkenArrow } from "./sunken-arrow";
 import { spectrumWipe } from "./spectrum-wipe";
-import { cardStack } from "./card-stack";
 import { shimmerMask } from "./shimmer-mask";
-import { prismEdge } from "./prism-edge";
 import { emberCore } from "./ember-core";
 import { neonTubeIgnite } from "./neon-tube-ignite";
 import { starlightGenerate } from "./starlight-generate";
@@ -89,8 +82,6 @@ import { starlightGenerate } from "./starlight-generate";
 // the only line that needs to change to register a new button.
 export const buttons: ButtonDef[] = [
   gradient,
-  neumorphic,
-  glass,
   outline,
   neon,
   press,
@@ -160,16 +151,11 @@ export const buttons: ButtonDef[] = [
   amberKeycap,
   frostedPane,
   softEmboss,
-  softToggle,
   magneticFilings,
-  spiritLevel,
   kintsugiSeam,
   returnCarriage,
-  sunkenArrow,
   spectrumWipe,
-  cardStack,
   shimmerMask,
-  prismEdge,
   emberCore,
   neonTubeIgnite,
   starlightGenerate,
