@@ -44,7 +44,7 @@ export default function Home() {
           </a>
         </div>
 
-        <p className="mx-auto mt-6 max-w-md text-xs text-muted-foreground/50">
+        <p className="mx-auto mt-6 max-w-md text-xs font-medium text-muted-foreground/70">
           Free to contribute &mdash; open a PR, suggest a style, or share your own creations.
         </p>
       </footer>
