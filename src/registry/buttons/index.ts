@@ -77,6 +77,10 @@ import { shimmerMask } from "./shimmer-mask";
 import { emberCore } from "./ember-core";
 import { neonTubeIgnite } from "./neon-tube-ignite";
 import { starlightGenerate } from "./starlight-generate";
+import { flashcardFlip } from "./flashcard-flip";
+import { arcStart } from "./arc-start";
+import { expandingPillSend } from "./expanding-pill";
+import { emeraldPremium } from "./emerald-premium";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -159,6 +163,10 @@ export const buttons: ButtonDef[] = [
   emberCore,
   neonTubeIgnite,
   starlightGenerate,
+  flashcardFlip,
+  arcStart,
+  expandingPillSend,
+  emeraldPremium,
 ];
 
 export function getButton(id: string) {
