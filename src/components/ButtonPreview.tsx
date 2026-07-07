@@ -4,6 +4,7 @@ import { motion, type TargetAndTransition } from "motion/react";
 import type { ButtonDef } from "@/registry/buttons";
 import { computeStyleSet } from "@/lib/codegen";
 import { Controls } from "@/lib/playground-types";
+import { useEffect, useRef } from "react";
 
 /**
  * Renders a single button from the registry, regardless of `kind`.
@@ -17,12 +18,21 @@ export function ButtonPreview({
   button: ButtonDef;
   controls: Controls;
 }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (button.kind === "custom" && button.js && containerRef.current) {
+      const script = new Function(button.js);
+      script();
+    }
+  }, [button]);
+
   if (button.kind === "custom") {
     return (
-      <>
+      <div ref={containerRef}>
         <style dangerouslySetInnerHTML={{ __html: button.css }} />
         <span dangerouslySetInnerHTML={{ __html: button.html }} />
-      </>
+      </div>
     );
   }
 

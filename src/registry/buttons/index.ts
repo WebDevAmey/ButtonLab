@@ -66,6 +66,15 @@ import { pinwheelSpin } from "./pinwheel-spin";
 import { parallaxTilt } from "./parallax-tilt";
 import { circuitTrace } from "./circuit-trace";
 import { cipherDecode } from "./cipher-decode";
+import { radarLock } from "./radar-lock";
+import { shardBurst } from "./shard-burst";
+import { amberKeycap } from "./amber-keycap";
+import { frostedPane } from "./frosted-pane";
+import { softEmboss } from "./soft-emboss";
+import { softToggle } from "./soft-toggle";
+import { magneticFilings } from "./magnetic-filings";
+import { spiritLevel } from "./spirit-level";
+import { kintsugiSeam } from "./kintsugi-seam";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -137,6 +146,15 @@ export const buttons: ButtonDef[] = [
   parallaxTilt,
   circuitTrace,
   cipherDecode,
+  radarLock,
+  shardBurst,
+  amberKeycap,
+  frostedPane,
+  softEmboss,
+  softToggle,
+  magneticFilings,
+  spiritLevel,
+  kintsugiSeam,
 ];
 
 export function getButton(id: string) {

@@ -41,6 +41,7 @@ export type CustomButtonDef = BaseButtonDef & {
   kind: "custom";
   html: string;
   css: string;
+  js?: string;
 };
 
 export type ButtonDef = ParametricButtonDef | CustomButtonDef;
