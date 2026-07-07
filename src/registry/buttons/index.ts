@@ -36,7 +36,6 @@ import { gradientLink } from "./gradient-link";
 import { playNow } from "./play-now";
 import { shredder } from "./shredder";
 import { chamberDoor } from "./chamber-door";
-import { vinylSpin } from "./vinyl-spin";
 import { risingTide } from "./rising-tide";
 import { dominoCascade } from "./domino-cascade";
 import { paperFan } from "./paper-fan";
@@ -123,7 +122,6 @@ export const buttons: ButtonDef[] = [
   playNow,
   shredder,
   chamberDoor,
-  vinylSpin,
   risingTide,
   dominoCascade,
   paperFan,

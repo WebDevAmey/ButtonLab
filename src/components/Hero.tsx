@@ -34,11 +34,11 @@ export function Hero() {
       tl.to(line2Ref.current, {
         scrambleText: {
           text: "worth stealing.",
-          chars: "abcdefghijklmnopqrstuvwxyz",
-          revealDelay: 0.12,
-          speed: 0.35,
+          chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!?",
+          revealDelay: 0.35,
+          speed: 0.2,
         },
-        duration: 1.2,
+        duration: 2,
       }, 0.12);
     }
 
