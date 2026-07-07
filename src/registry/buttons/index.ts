@@ -57,6 +57,19 @@ import { compassNeedle } from "./compass-needlle";
 import { drawerPull } from "./draw-pull";
 import { fogWipe } from "./fog-wipe";
 import { dogEarFold } from "./dog-ear-fold";
+import { tapeRetract } from "./tape-retract";
+import { vaultBolt } from "./vault-bolt";
+import { punchWindow } from "./punch-window";
+import { mercuryBead } from "./mercury-bead";
+import { detachedShadow } from "./detached-shadow";
+import { apertureIris } from "./aperture-iris";
+import { marionetteThread } from "./marionette-thread";
+import { clayDent } from "./clay-dent";
+import { depthFlip } from "./depth-flip";
+import { dominoRow } from "./domino-row";
+import { weighingScale } from "./weighing-scale";
+import { peephole } from "../peephole";
+import { guillotineCut } from "./guillotine-cut";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -119,6 +132,20 @@ export const buttons: ButtonDef[] = [
   drawerPull,
   fogWipe,
   dogEarFold,
+  tapeRetract,
+  vaultBolt,
+  punchWindow,
+  mercuryBead,
+  detachedShadow,
+  apertureIris,
+  marionetteThread,
+  clayDent,
+  depthFlip,
+  dominoRow,
+  weighingScale,
+  peephole,
+  guillotineCut,
+  
 ];
 
 export function getButton(id: string) {
