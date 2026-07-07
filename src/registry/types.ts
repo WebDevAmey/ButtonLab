@@ -1,3 +1,5 @@
+import React from "react";
+
 export type AccentMode =
   | "gradient"
   | "neumorphic"
@@ -44,4 +46,13 @@ export type CustomButtonDef = BaseButtonDef & {
   js?: string;
 };
 
-export type ButtonDef = ParametricButtonDef | CustomButtonDef;
+/**
+ * A React component button. Use this for interactive buttons that require
+ * React hooks, Framer Motion, or complex stateful behavior.
+ */
+export type ComponentButtonDef = BaseButtonDef & {
+  kind: "component";
+  Component: React.ComponentType<any>;
+};
+
+export type ButtonDef = ParametricButtonDef | CustomButtonDef | ComponentButtonDef;

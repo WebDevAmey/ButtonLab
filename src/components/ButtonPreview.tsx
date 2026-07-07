@@ -27,6 +27,11 @@ export function ButtonPreview({
     }
   }, [button]);
 
+  if (button.kind === "component") {
+    const Component = button.Component;
+    return <Component />;
+  }
+
   if (button.kind === "custom") {
     return (
       <div ref={containerRef}>

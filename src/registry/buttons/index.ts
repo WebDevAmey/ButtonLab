@@ -75,6 +75,15 @@ import { softToggle } from "./soft-toggle";
 import { magneticFilings } from "./magnetic-filings";
 import { spiritLevel } from "./spirit-level";
 import { kintsugiSeam } from "./kintsugi-seam";
+import { returnCarriage } from "./return-carriage";
+import { sunkenArrow } from "./sunken-arrow";
+import { spectrumWipe } from "./spectrum-wipe";
+import { cardStack } from "./card-stack";
+import { shimmerMask } from "./shimmer-mask";
+import { prismEdge } from "./prism-edge";
+import { emberCore } from "./ember-core";
+import { neonTubeIgnite } from "./neon-tube-ignite";
+import { starlightGenerate } from "./starlight-generate";
 
 // Add your button's import above and slot it into this array — that's
 // the only line that needs to change to register a new button.
@@ -155,6 +164,15 @@ export const buttons: ButtonDef[] = [
   magneticFilings,
   spiritLevel,
   kintsugiSeam,
+  returnCarriage,
+  sunkenArrow,
+  spectrumWipe,
+  cardStack,
+  shimmerMask,
+  prismEdge,
+  emberCore,
+  neonTubeIgnite,
+  starlightGenerate,
 ];
 
 export function getButton(id: string) {

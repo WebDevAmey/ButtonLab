@@ -164,7 +164,9 @@ export function buildCss(button: ParametricButtonDef, controls: Controls) {
 // Custom buttons are hand-written snippets; most are authored as plain CSS,
 // but some are authored directly in Tailwind (empty `css`) — those copy
 // their HTML instead.
+// Component buttons return their prompt since they're React components.
 export function getCode(button: ButtonDef): string {
+  if (button.kind === "component") return button.prompt;
   if (button.kind === "custom") return button.css.trim() ? button.css : button.html;
   return buildCss(button, defaultControls(button.defaultAccent));
 }
