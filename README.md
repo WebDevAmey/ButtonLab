@@ -32,7 +32,7 @@ A modern, theme-aware button component library featuring 50+ interactive button 
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/WebDevAmey/ButtonLab.git
 cd buttonlab
 
 # Install dependencies
